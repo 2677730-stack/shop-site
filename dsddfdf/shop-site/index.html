@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог товаров</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="orderModal" class="modal">
+    <span class="close" onclick="closeOrder()">×</span>
+    <h2>Оформление заказа</h2>
+    <div class="field">
+        <label>Как с вами связаться? (Telegram, номер)</label>
+        <input type="text" id="contact">
+    </div>
+    <div class="field">
+        <label>Где было бы удобно получить доставку?</label>
+        <textarea id="address"></textarea>
+    </div>
+    <button class="order-btn" onclick="sendOrder()">Отправить заказ</button>
+</div>
+
+<div id="overlay" onclick="closeOrder()"></div>
+
+<button id="cart-btn" onclick="toggleCart()">🛒 Корзина (<span id="cart-count">0</span>)</button>
+
+<div id="cart">
+    <div class="cart-header">
+        <h3>🛒 Ваша корзина</h3>
+        <button onclick="clearCart()" class="clear-btn">Очистить всё</button>
+    </div>
+    
+    <ul id="cart-items"></ul>
+    <div id="cart-total"></div>
+    
+    <div class="cart-buttons">
+        <button onclick="toggleCart()" class="continue-btn">Продолжить покупки</button>
+        <button type="button" class="order-btn" onclick="openOrder()">Оформить заказ</button>
+    </div>
+</div>
+
+<header>
+    <h1>Каталог товаров</h1>
+</header>
+
+<div class="search">
+    <input type="text" placeholder="Поиск по товарам..." oninput="searchProducts(this.value)">
+</div>
+
+<div class="filters">
+    <button class="filter-btn active" onclick="filterProducts('all', this)">Все</button>
+    <button class="filter-btn" onclick="filterProducts('podes', this)">Под-системы</button>
+    <button class="filter-btn" onclick="filterProducts('hq', this)">Одноразки</button>
+    <button class="filter-btn" onclick="filterProducts('liquids', this)">Жидкости</button>
+    <button class="filter-btn" onclick="filterProducts('parts', this)">Испарители</button>
+</div>
+
+<main class="catalog">
+    <div class="card" data-category="podes">
+        <div class="img-wrapper">
+            <img src="images/passito-3.png" alt="">
+        </div>
+        <h2>Passito 3 (белый)</h2>
+        <p>Описание товара</p>
+        <span class="price">3800 ₽</span>
+        <button class="buy" onclick="addToCart('Passito 3 (белый)', 3800, this)">Купить</button>
+    </div>
+    <div class="card" data-category="liquids">
+        <div class="img-wrapper">
+            <img src="images/monashka.jpg" alt="">
+        </div>
+        <h2>злая монашка</h2>
+        <p>Описание товара</p>
+        <span class="price">500 ₽</span>
+        <button class="buy" onclick="addToCart('злая монашка', 500, this)">Купить</button>
+    </div>
+    <div class="card" data-category="liquids">
+        <div class="img-wrapper">
+            <img src="images/podonki.jpg" alt="">
+        </div>
+        <h2>подонки</h2>
+        <p>Описание товара</p>
+        <span class="price">500 ₽</span>
+        <button class="buy" onclick="addToCart('подонки', 500, this)">Купить</button>
+    </div>
+</main>
+
+<audio id="cart-sound" src="sounds/cart-sound.mp3"></audio>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+title: My Shop
+description: Каталог товаров с корзиной
+baseurl: ""
+url: "http://localhost:4000"
+
+markdown: kramdown
+
+# Исключаем файлы, которые не нужны Jekyll
+exclude: ["Gemfile", "Gemfile.lock", "node_modules", "vendor"]
+
